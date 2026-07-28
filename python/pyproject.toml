@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "talocode-statuslane"
+version = "0.1.0"
+description = "Open-source uptime monitoring, incident tracking, and status pages for developers and agents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{name = "Talocode"}]
+keywords = ["talocode", "uptime", "monitoring", "status", "agents"]
+classifiers = ["Development Status :: 3 - Alpha", "Intended Audience :: Developers", "Programming Language :: Python :: 3"]
+
+[project.urls]
+Homepage = "https://github.com/talocode/statuslane"
+Documentation = "https://docs.talocode.site"
+Repository = "https://github.com/talocode/statuslane"
+PyPI = "https://pypi.org/project/talocode-statuslane/"
+
+[project.scripts]
+statuslane = "statuslane.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["statuslane*"]

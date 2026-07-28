@@ -1,0 +1,11 @@
+export class StatusLaneError extends Error { constructor(message: string, public options: { code?: string; status?: number } = {}) { super(message); this.name = 'StatusLaneError' } }
+export class StatusLaneClient {
+  private apiKey?: string; private baseUrl: string
+  constructor(options: { apiKey?: string; baseUrl?: string } = {}) { this.apiKey = options.apiKey || process.env.TALOCODE_API_KEY; this.baseUrl = (options.baseUrl || process.env.TALOCODE_BASE_URL || 'https://api.talocode.site').replace(/\/+$/, '') }
+  private async request<T>(method: string, path: string, body?: unknown): Promise<T> { const headers: Record<string, string> = { 'Content-Type': 'application/json' }; if (this.apiKey) headers.Authorization = `Bearer ${this.apiKey}`; const response = await fetch(`${this.baseUrl}${path}`, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) }); if (!response.ok) { const data = await response.json().catch(() => ({})) as { error?: string; code?: string }; throw new StatusLaneError(data.error || `Request failed (${response.status})`, { code: data.code, status: response.status }) } return response.json() as Promise<T> }
+  health() { return this.request('GET', '/v1/statuslane/health') } pricing() { return this.request('GET', '/v1/statuslane/pricing') } capabilities() { return this.request('GET', '/v1/statuslane/capabilities') }
+  createMonitor(input: Record<string, unknown>) { return this.request('POST', '/v1/statuslane/monitors', input) } listMonitors() { return this.request('GET', '/v1/statuslane/monitors') } getMonitor(id: string) { return this.request('GET', `/v1/statuslane/monitors/${encodeURIComponent(id)}`) }
+  checkMonitor(id: string) { return this.request('POST', `/v1/statuslane/monitors/${encodeURIComponent(id)}/check`, {}) } history(id: string) { return this.request('GET', `/v1/statuslane/monitors/${encodeURIComponent(id)}/history`) }
+  openIncident(id: string, note?: string) { return this.request('POST', `/v1/statuslane/monitors/${encodeURIComponent(id)}/incident`, { note }) } resolveIncident(id: string) { return this.request('POST', `/v1/statuslane/incidents/${encodeURIComponent(id)}/resolve`, {}) }
+}
+export const createStatusLaneClient = (options?: { apiKey?: string; baseUrl?: string }) => new StatusLaneClient(options)

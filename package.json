@@ -1,0 +1,17 @@
+{
+  "name": "@talocode/statuslane",
+  "version": "0.1.0",
+  "description": "Open-source uptime monitoring, incident tracking, and status pages for developers and agents",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": { "statuslane": "./dist/cli.js", "statuslane-mcp": "./dist/mcp.js", "statuslane-server": "./dist/server.js" },
+  "scripts": { "build": "tsc", "test": "npm run build && node --test tests/*.test.mjs", "prepublishOnly": "npm run build && npm test" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": ["uptime", "monitoring", "status-page", "incidents", "agents", "talocode", "mcp"],
+  "repository": { "type": "git", "url": "git+https://github.com/talocode/statuslane.git" },
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "engines": { "node": ">=18" },
+  "devDependencies": { "@types/node": "^22.10.2", "typescript": "^5.7.2" }
+}
