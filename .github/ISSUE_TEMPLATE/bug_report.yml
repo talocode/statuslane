@@ -1,0 +1,74 @@
+name: Bug report
+description: Report a bug in StatusLane (CLI, SDKs, MCP server, or local server)
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report. Please check that the issue has not already been reported.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      description: Which part of StatusLane is affected?
+      options:
+        - CLI (statuslane)
+        - TypeScript SDK (@talocode/statuslane)
+        - Python SDK (talocode-statuslane)
+        - MCP server (statuslane-mcp)
+        - Local HTTP server (statuslane-server)
+        - Core engine
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug.
+      placeholder: Tell us what you expected to happen and what actually happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Minimal reproduction steps or a small script that triggers the bug.
+      placeholder: |
+        1. Install `@talocode/statuslane`
+        2. Run `statuslane monitor-add --name "API" --url "https://example.com"`
+        3. See the error...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Package version you are using (e.g. 0.1.1)
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node.js version, Python version, and how StatusLane was installed.
+      placeholder: |
+        - OS: Ubuntu 24.04
+        - Node.js: v22.11.0
+        - Python: 3.12
+        - Install: npm global / pip / source
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste any error output or stack traces. No sensitive data, please.
+      render: shell
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might help, such as related issues or your use case.

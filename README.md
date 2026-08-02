@@ -115,6 +115,14 @@ More: [github.com/talocode](https://github.com/talocode) · [talocode.site](http
 
 Please note that this project is released with a [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
+## Contributing
+
+StatusLane is an open-source project and welcomes contributions. See the [Contributing Guide](CONTRIBUTING.md) for how to report issues, propose features, and submit pull requests.
+
+## Security
+
+Found a vulnerability? Do not open a public issue. See [SECURITY.md](SECURITY.md) for how to report it responsibly.
+
 ## License
 
 MIT © Talocode

@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest an idea for StatusLane
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature. Please check that a similar request does not already exist.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem are you trying to solve? Focus on the problem, not the solution.
+      placeholder: "Example: I want to be notified in Slack when a monitor goes down, instead of checking manually."
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed solution
+      description: A clear description of what you would like to see added.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds or alternative approaches you have tried.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      description: Which part of StatusLane would this affect?
+      options:
+        - CLI (statuslane)
+        - TypeScript SDK (@talocode/statuslane)
+        - Python SDK (talocode-statuslane)
+        - MCP server (statuslane-mcp)
+        - Local HTTP server (statuslane-server)
+        - Core engine
+        - Documentation
+        - Other
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Examples, screenshots, or links that help illustrate the request.
