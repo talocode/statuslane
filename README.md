@@ -111,6 +111,10 @@ export TALOCODE_BASE_URL=https://api.talocode.site
 
 More: [github.com/talocode](https://github.com/talocode) · [talocode.site](https://talocode.site) · [docs.talocode.site](https://docs.talocode.site)
 
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
 ## License
 
 MIT © Talocode
